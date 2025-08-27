@@ -1,8 +1,9 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   envDir: '../',
+  base: '/',
   server: {
     host: true,
     proxy: {
@@ -19,6 +20,7 @@ export default defineConfig({
     allowedHosts: [
       'moose-in-adder.ngrok-free.app',
       'trollinglolin.xyz',
+      'discord-activity-test-beige.vercel.app',
       'localhost'
     ]
   },

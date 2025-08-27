@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd client && npm install && npm run build"
+    "build": "cd client && npm install && npm run build",
+    "start": "node server/server.js",
+    "vercel-build": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
