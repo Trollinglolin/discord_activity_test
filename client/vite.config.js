@@ -1,11 +1,22 @@
 import { defineConfig } from 'vite';
+import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   envDir: '../',
-  base: '/',
+  base: mode === 'production' ? '/' : '/',
+  build: {
+    outDir: '../client/dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url))
+      }
+    }
+  },
   server: {
     host: true,
+    port: 3000,
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
@@ -24,4 +35,8 @@ export default defineConfig({
       'localhost'
     ]
   },
-});
+  preview: {
+    port: 3000,
+    host: true
+  }
+}));
